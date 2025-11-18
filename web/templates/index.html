@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A blazing-fast, local-first searchable database for all your work files">
+    <title>Life DB - Search Your Files</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>
+                <span>🔍</span>
+                Life DB
+            </h1>
+            <p class="subtitle">Search your documents, emails, and files blazing fast</p>
+        </header>
+
+        <!-- Statistics Bar -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-value" id="total-docs">0</span>
+                <span class="stat-label">Documents</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="file-types">0</span>
+                <span class="stat-label">File Types</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="total-size">0 MB</span>
+                <span class="stat-label">Total Size</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="recent-docs">0</span>
+                <span class="stat-label">This Week</span>
+            </div>
+        </div>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-input-wrapper">
+                <span class="search-icon">🔍</span>
+                <input
+                    type="search"
+                    id="search-input"
+                    placeholder="Search documents, emails, presentations..."
+                    autocomplete="off"
+                    spellcheck="false"
+                >
+            </div>
+
+            <div class="search-meta">
+                <div class="filters">
+                    <select id="file-type-filter" class="filter-select">
+                        <option value="">All File Types</option>
+                    </select>
+
+                    <select id="author-filter" class="filter-select">
+                        <option value="">All Authors</option>
+                    </select>
+                </div>
+
+                <div id="search-meta" class="search-info">
+                    Ready to search
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section">
+            <div class="results-header">
+                <div class="results-title">Search Results</div>
+            </div>
+
+            <div id="results">
+                <!-- Results will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Load JavaScript -->
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+# Life DB Configuration File
+
+# Application Settings
+app:
+  name: "Life DB - Searchable File Database"
+  version: "0.1.0"
+  host: "0.0.0.0"
+  port: 8000
+  debug: false
+
+# Database Settings
+database:
+  path: "./db/lifedb.sqlite"
+  echo: false
+  pool_size: 5
+  max_overflow: 10
+
+# Ingestion Settings
+ingestion:
+  # Directories to watch and index
+  watch_directories:
+    - "./data"
+
+  # Supported file extensions
+  supported_extensions:
+    # Microsoft Office
+    - ".docx"
+    - ".xlsx"
+    - ".pptx"
+    - ".doc"
+    - ".xls"
+    - ".ppt"
+
+    # PDF
+    - ".pdf"
+
+    # Email
+    - ".msg"
+    - ".eml"
+
+    # Text
+    - ".txt"
+    - ".md"
+    - ".rtf"
+
+    # Images (will use OCR)
+    - ".png"
+    - ".jpg"
+    - ".jpeg"
+    - ".gif"
+    - ".bmp"
+    - ".tiff"
+
+    # Data formats
+    - ".csv"
+    - ".json"
+    - ".xml"
+
+  # Maximum file size in MB
+  max_file_size_mb: 100
+
+  # Number of parallel workers for processing
+  parallel_workers: 4
+
+  # Skip files matching these patterns
+  ignore_patterns:
+    - ".*"  # Hidden files
+    - "~$*"  # Office temp files
+    - "*.tmp"
+    - "*.temp"
+
+# Search Settings
+search:
+  # Number of results per page
+  results_per_page: 50
+
+  # Maximum results to return
+  max_results: 1000
+
+  # Snippet length (characters around match)
+  snippet_length: 64
+
+  # Enable typo tolerance (requires Meilisearch)
+  enable_typo_tolerance: false
+
+  # Minimum query length
+  min_query_length: 2
+
+# OCR Settings
+ocr:
+  # Enable OCR for images
+  enabled: true
+
+  # Languages to detect (ISO 639-1 codes)
+  languages:
+    - "en"  # English
+
+  # Use GPU if available
+  gpu: false
+
+  # Confidence threshold (0.0-1.0)
+  min_confidence: 0.3
+
+# Logging Settings
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "./logs/lifedb.log"
+  max_bytes: 10485760  # 10MB
+  backup_count: 5
+
+# Performance Settings
+performance:
+  # Enable caching
+  enable_cache: true
+
+  # Cache TTL in seconds
+  cache_ttl: 300
+
+  # Batch size for bulk operations
+  batch_size: 100
+
+  # Enable async processing
+  async_enabled: true
+
+# File Watcher Settings
+file_watcher:
+  # Enable automatic file watching
+  enabled: true
+
+  # Debounce delay in seconds (wait this long after last change)
+  debounce_delay: 2
+
+  # Watch for these event types
+  watch_events:
+    - "created"
+    - "modified"
+    - "moved"
